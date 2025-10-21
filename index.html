@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Edit Mode Button -->
+    <button id="editModeBtn" class="fixed-btn top-right">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+        </svg>
+    </button>
+
+    <!-- Music Toggle Button -->
+    <button id="musicBtn" class="fixed-btn top-left">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+        </svg>
+    </button>
+
+    <!-- Hidden Audio Player -->
+    <audio id="bgMusic" loop></audio>
+
+    <!-- Slide Container -->
+    <div id="slideContainer" class="slide-container">
+        
+        <!-- Slide 0: Welcome -->
+        <section class="slide active" data-slide="0" data-bg="bg-gradient-1">
+            <div class="floating-particles"></div>
+            <div class="slide-content">
+                <div class="photo-float top-right">
+                    <img src="images/placeholder.svg" alt="Her">
+                </div>
+                <div class="text-center max-w-3xl">
+                    <h1 class="title-romantic editable" data-field="welcome">Hey love, this is just for you.</h1>
+                    <button class="btn-primary btn-begin" onclick="nextSlide()">
+                        Tap to Begin
+                        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 1: Reassurance -->
+        <section class="slide" data-slide="1" data-bg="bg-gradient-2">
+            <div class="floating-particles"></div>
+            <div class="slide-content">
+                <div class="photo-float top-left delay-1">
+                    <img src="images/placeholder.svg" alt="Memory">
+                </div>
+                <div class="photo-float bottom-right delay-2">
+                    <img src="images/placeholder.svg" alt="Memory">
+                </div>
+                <div class="text-center max-w-2xl">
+                    <p class="text-handwritten editable" data-field="reassurance">No matter what happens, I'm always with you.</p>
+                    <button class="btn-secondary" onclick="nextSlide()">
+                        Next
+                        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 2: Apology -->
+        <section class="slide" data-slide="2" data-bg="bg-gradient-3">
+            <div class="floating-hearts"></div>
+            <div class="slide-content">
+                <div class="photo-float top-right-small delay-1">
+                    <img src="images/placeholder.svg" alt="Memory">
+                </div>
+                <div class="text-center max-w-2xl">
+                    <p class="text-handwritten editable" data-field="apology">I'm sorry for my mistakes and for the times I hurt you.</p>
+                    <button class="btn-pink" onclick="nextSlide()">
+                        Next
+                        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Promise -->
+        <section class="slide" data-slide="3" data-bg="bg-gradient-2">
+            <div class="floating-particles"></div>
+            <div class="slide-content">
+                <div class="photo-float top-left delay-1">
+                    <img src="images/placeholder.svg" alt="Memory">
+                </div>
+                <div class="photo-float bottom-right delay-2">
+                    <img src="images/placeholder.svg" alt="Memory">
+                </div>
+                <div class="infinity-icon">∞</div>
+                <div class="text-center max-w-2xl">
+                    <p class="text-handwritten editable" data-field="promise">I promise to always choose you, no matter what.</p>
+                    <button class="btn-secondary" onclick="nextSlide()">
+                        Next
+                        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Song Dedication -->
+        <section class="slide" data-slide="4" data-bg="bg-gradient-3">
+            <div class="floating-particles"></div>
+            <div class="slide-content">
+                <div class="text-center max-w-lg">
+                    <div class="album-cover">
+                        <img src="images/placeholder.svg" alt="Album Cover">
+                    </div>
+                    <h2 class="title-romantic">Our Song</h2>
+                    <div class="music-player">
+                        <button id="playPauseBtn" class="play-btn">
+                            <svg id="playIcon" class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            <svg id="pauseIcon" class="icon hidden" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="6" y="4" width="4" height="16"></rect>
+                                <rect x="14" y="4" width="4" height="16"></rect>
+                            </svg>
+                        </button>
+                        <input type="url" id="songUrlInput" class="song-input hidden" placeholder="Enter song URL">
+                    </div>
+                    <button class="btn-secondary" onclick="nextSlide()">
+                        Next
+                        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Heart Breaker Game -->
+        <section class="slide" data-slide="5" data-bg="bg-gradient-1">
+            <div class="slide-content">
+                <div class="text-center max-w-3xl">
+                    <h2 class="title-romantic">Break Through for Love</h2>
+                    <p class="game-instructions">Use arrow keys or mouse/touch to move the paddle</p>
+                    <div class="game-container">
+                        <canvas id="gameCanvas"></canvas>
+                        <div id="victoryMessage" class="victory-message hidden">
+                            <svg class="heart-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                            <h3 class="title-romantic">You broke through everything</h3>
+                            <p>— for love</p>
+                        </div>
+                    </div>
+                    <button class="btn-secondary" onclick="nextSlide()">
+                        Next
+                        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Memories -->
+        <section class="slide" data-slide="6" data-bg="bg-gradient-2">
+            <div class="floating-particles"></div>
+            <div class="slide-content">
+                <div class="text-center max-w-2xl">
+                    <h2 class="title-romantic">Our Memories</h2>
+                    <div class="memory-slideshow">
+                        <div class="memory-slide active">
+                            <img src="images/placeholder.svg" alt="Memory 1">
+                            <p class="memory-caption editable" data-field="memory0">Our first adventure together</p>
+                        </div>
+                        <div class="memory-slide">
+                            <img src="images/placeholder.svg" alt="Memory 2">
+                            <p class="memory-caption editable" data-field="memory1">That beautiful sunset we watched</p>
+                        </div>
+                        <div class="memory-slide">
+                            <img src="images/placeholder.svg" alt="Memory 3">
+                            <p class="memory-caption editable" data-field="memory2">The day everything changed</p>
+                        </div>
+                        <div class="memory-slide">
+                            <img src="images/placeholder.svg" alt="Memory 4">
+                            <p class="memory-caption editable" data-field="memory3">Our favorite moment</p>
+                        </div>
+                    </div>
+                    <div class="memory-dots">
+                        <span class="dot active" onclick="showMemory(0)"></span>
+                        <span class="dot" onclick="showMemory(1)"></span>
+                        <span class="dot" onclick="showMemory(2)"></span>
+                        <span class="dot" onclick="showMemory(3)"></span>
+                    </div>
+                    <button class="btn-secondary" onclick="nextSlide()">
+                        Next
+                        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Dreams -->
+        <section class="slide" data-slide="7" data-bg="bg-gradient-2">
+            <div class="floating-sparkles"></div>
+            <div class="slide-content">
+                <div class="dreams-layout">
+                    <div class="photo-circle delay-1">
+                        <img src="images/placeholder.svg" alt="Her">
+                    </div>
+                    <div class="text-center flex-1">
+                        <p class="text-handwritten editable" data-field="dreams">Someday, all our dreams will come true — together.</p>
+                    </div>
+                    <div class="photo-circle delay-2">
+                        <img src="images/placeholder.svg" alt="Us">
+                    </div>
+                </div>
+                <button class="btn-secondary" onclick="nextSlide()">
+                    Next
+                    <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Slide 8: Thank You -->
+        <section class="slide" data-slide="8" data-bg="bg-gradient-3">
+            <div class="floating-particles"></div>
+            <div class="glow-background"></div>
+            <div class="slide-content">
+                <div class="photo-float top-left delay-1">
+                    <img src="images/placeholder.svg" alt="Memory">
+                </div>
+                <div class="photo-float bottom-right delay-2">
+                    <img src="images/placeholder.svg" alt="Memory">
+                </div>
+                <div class="text-center max-w-2xl">
+                    <p class="text-handwritten editable" data-field="thankYou">Thank you for being my calm in every storm.</p>
+                    <button class="btn-secondary" onclick="nextSlide()">
+                        Next
+                        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 9: Final Message -->
+        <section class="slide" data-slide="9" data-bg="bg-gradient-1">
+            <div class="floating-particles"></div>
+            <div class="slide-content">
+                <div class="photo-pulse top-left-small delay-1">
+                    <img src="images/placeholder.svg" alt="Memory">
+                </div>
+                <div class="photo-pulse top-right delay-2">
+                    <img src="images/placeholder.svg" alt="Memory">
+                </div>
+                <div class="photo-pulse bottom-left delay-3">
+                    <img src="images/placeholder.svg" alt="Memory">
+                </div>
+                <div class="photo-pulse bottom-right-small delay-4">
+                    <img src="images/placeholder.svg" alt="Memory">
+                </div>
+                <div class="photo-pulse center-left delay-5">
+                    <img src="images/placeholder.svg" alt="Memory">
+                </div>
+                <div class="text-center max-w-3xl final-message-content">
+                    <h1 class="title-final editable" data-field="finalMessage">I love you endlessly</h1>
+                    <button class="btn-restart" onclick="restartJourney()">
+                        <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="1 4 1 10 7 10"></polyline>
+                            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                        </svg>
+                        Restart Journey
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
